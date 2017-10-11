@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Reflection;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,15 +10,24 @@ namespace Estagio_TexasHoldem.Models
 {
     public enum Mao
     {
+        [Description("Carta Alta")]
         nothing,
+        [Description("Um Par")]
         OnePair,
+        [Description("Dois Pares")]
         TwoPair,
+        [Description("Trinca")]
         ThreeKind,
+        [Description("Sequência")]
         Straight,
         Flush,
+        [Description("Full House")]
         FullHouse,
+        [Description("Quadra")]
         FourKind,
+        [Description("Straight Flush")]
         StraightFlush,
+        [Description("Royal Flush")]
         RoyalFlush
     }
 
@@ -87,7 +99,7 @@ namespace Estagio_TexasHoldem.Models
                 return Mao.OnePair;
 
             valorDaMao.HighCard = (int)cartas[4].Mvalor;
-            return Mao.nothing;
+            return Mao.nothing ;
         }
 
         private void getNumberOfSuit()

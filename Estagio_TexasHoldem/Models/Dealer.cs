@@ -104,37 +104,42 @@ namespace Estagio_TexasHoldem.Models
             Regras computadorMaoVerificada = new Regras(y);
 
             Mao jogadorMao = jogadorMaoVerificada.MaoVerificada();
+            var retornoMaoJ = jogadorMao.ToString();
             Mao computadorMao = computadorMaoVerificada.MaoVerificada();
+            var retornoMaoC = computadorMao.ToString();
+            var retornoHighCardJ = TrocaLetra(jogadorMaoVerificada.ValordasMaos.HighCard.ToString());
+            var retornoHighCardC = TrocaLetra(computadorMaoVerificada.ValordasMaos.HighCard.ToString());
 
+            
             if (jogadorMao > computadorMao)
             {
-               return ganhador = "player ganhou";
+                return ganhador = "Player ganhou com " + retornoMaoJ ;
             }
             else if (jogadorMao < computadorMao)
             {
-                return ganhador = "computador ganhou"; //computador ganhou
+                return ganhador = "Computador ganhou com " + retornoMaoC;
             }
             else
             {
                 if (jogadorMaoVerificada.ValordasMaos.Total > computadorMaoVerificada.ValordasMaos.Total)
                 {
-                    return ganhador = "player ganhou";
+                    return ganhador = "Player ganhou com " + retornoMaoJ;
                 }
                 else if (jogadorMaoVerificada.ValordasMaos.Total > computadorMaoVerificada.ValordasMaos.Total)
                 {
-                    return ganhador = "computador ganhou";//computador ganhou
+                    return ganhador = "Computador ganhou com " + retornoMaoC;
                 }
                 else if (jogadorMaoVerificada.ValordasMaos.HighCard > computadorMaoVerificada.ValordasMaos.HighCard)
                 {
-                    return ganhador = "player ganhou";
+                    return ganhador = "Player ganhou com " + retornoHighCardJ;
                 }
                 else if (jogadorMaoVerificada.ValordasMaos.HighCard < computadorMaoVerificada.ValordasMaos.HighCard)
                 {
-                    return ganhador = "computador ganhou";//Computador ganhou
+                    return ganhador = "Computador ganhou com " + retornoHighCardC;
                 }
                 else
                 {
-                    return ganhador = "player e computador ganhou"; //ningem ganhou, ou todos ganharam nunca aconteceu antes
+                    return ganhador = "Empate"; //ningem ganhou, ou todos ganharam nunca aconteceu antes
                 }
             }
         }
